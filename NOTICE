@@ -1,0 +1,13 @@
+Decision Compass
+Copyright 2026 Zhixu Li
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This is an exploratory research project. It is NOT a clinically or financially
+validated product, and nothing herein constitutes financial, medical, or legal
+advice. The tool deliberately does not predict individual outcomes; all
+decisions remain the responsibility of the user.
+
+Reference-class base rates cited in the documentation are attributed to their
+original sources (see docs/RESEARCH-FOUNDATION.md). Some carry methodological
+disputes noted alongside them.

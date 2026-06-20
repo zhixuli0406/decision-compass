@@ -76,3 +76,13 @@ MVP 必須設計成可證偽的實驗，見 [`docs/MVP-EXPERIMENT.md`](docs/MVP-
 
 > 個人自我試用（N=1）：`python3 -m experiment.self_pilot` — 不受上述阻擋，現在就能用。
 > 發射閘門已實作：基準率為佔位假數據時，CLI 與 Web 都會擋下真實受試者（回 423 / SystemExit）。
+
+## 授權
+
+本專案採用 [Apache License 2.0](LICENSE)（含專利授權條款）。詳見 [`LICENSE`](LICENSE) 與 [`NOTICE`](NOTICE)。
+
+## 免責聲明
+
+這是**探索性研究專案**，不是經臨床/財務驗證的產品。工具刻意**不預測**個人結果；
+所有決策仍由使用者自行負責。文件中的基準率均附出處，但部分有方法學爭議（見
+[`docs/RESEARCH-FOUNDATION.md`](docs/RESEARCH-FOUNDATION.md)），請勿當作財務、醫療或法律建議。
