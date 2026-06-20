@@ -1,0 +1,78 @@
+{
+  "_schema": {
+    "description": "Reference-class base rates shown to participants as Layer 1. Every rate MUST carry a real, citable source before a real run. status='verified' is required to pass the launch gate; 'needs_source' will be blocked unless --allow-unverified is set; 'no_reliable_data' is an honest decision to omit (not shown, not blocking).",
+    "fields": {
+      "label": "what the rate measures (shown to participant)",
+      "point": "central estimate in [0,1]",
+      "low": "lower bound of plausible interval",
+      "high": "upper bound of plausible interval",
+      "status": "verified | needs_source | no_reliable_data",
+      "source": "full citation (author, year, title, venue)",
+      "url": "link to source",
+      "sample": "sample size / population / region / year",
+      "confidence": "high | medium | low | none",
+      "note": "caveats, methodological disputes"
+    },
+    "_research_note": "基準率由 deep-research（多輪對抗式驗證）查證。詳見 docs/RESEARCH-FOUNDATION.md §5。原 career_switch 因無可靠數據已移除，改採 retirement_4pct 與 quit_smoking 兩個有紮實基準率的情境。"
+  },
+  "retirement_4pct": {
+    "base_rates": [
+      {
+        "label": "「4% 提領計畫」在歷史 30 年期間不耗盡的成功率",
+        "point": 0.95,
+        "low": 0.64,
+        "high": 1.00,
+        "status": "verified",
+        "source": "Cooley, Hubbard & Walz 1998 (Trinity Study, AAII Journal)：50/50 股債、4% 隨通膨提領、滾動 30 年期約 95% 成功；Finke/Pfau/Blanchett 2015 (FPA Journal) 改用中期政府債更新至 2014 達 100%",
+        "url": "https://www.financialplanningassociation.org/article/journal/AUG15-sustainable-retirement-spending-low-interest-rates-updating-trinity-study",
+        "sample": "美國 S&P 500 + 長期/政府債，約 1926 起歷史滾動 30 年期",
+        "confidence": "high",
+        "note": "⚠️ 95% 是『歷史頻率』非『今日機率』。區間下界 64% 為 Pfau 2015 低利率環境 Monte Carlo 估計；國際 17 國資料中僅 4 國 SAFEMAX 超過 4%（Pfau 2010）。序列報酬風險與估值/利率使前瞻機率遠低於歷史值。展示時須標註此爭議。"
+      }
+    ]
+  },
+  "quit_smoking": {
+    "base_rates": [
+      {
+        "label": "使用 varenicline 藥物，6 個月後仍持續戒菸的成功率",
+        "point": 0.23,
+        "low": 0.21,
+        "high": 0.25,
+        "status": "verified",
+        "source": "Livingstone-Banks et al. 2023, Cochrane Systematic Review CD006103.pub9：varenicline vs 安慰劑 RR 2.32 (95% CI 2.15-2.51)，絕對率 230/1000 (213-249)，NNT≈8",
+        "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006103.pub9/full",
+        "sample": "41 RCT、17,395 人，全球，GRADE 高確定性",
+        "confidence": "high",
+        "note": "⚠️ 戒菸主題有情緒/健康敏感度，線上實驗須謹慎設計並提供支持資源。『靠意志力』對照組成功率約 10%，但研究明確指出此數字不可當作一般人群基準率（對抗驗證 0-3 駁回），故不單獨展示。"
+      }
+    ]
+  },
+  "relocation": {
+    "base_rates": [
+      {
+        "label": "外派人員完成整個任期（不提前返國）的比例",
+        "point": 0.93,
+        "low": 0.90,
+        "high": 0.95,
+        "status": "verified",
+        "source": "Brookfield Global Relocation Trends Survey 2012（提前返國率 7% → 完成率約 93%）；佐以 Harzing 1995 (Int'l J. HRM 6(2)) 與歐洲/英國小型調查（失敗率約 5%）",
+        "url": "http://ivemadeit.com/pdf/2012-Brookfield-Global-Relocations-Trends-Survey.pdf",
+        "sample": "Brookfield 2012：123 家企業（HR/relocation 經理自報，非外派者本人），55% 美洲/42% EMEA/3% 亞太",
+        "confidence": "medium",
+        "note": "⚠️ 企業自報估計、無信賴區間、樣本 n=123、2012 年。經典『16-40% 失敗率』為迷思（Harzing 1995 證實無實證基礎，不可用）。展示時須標註此為業界自報數字。"
+      },
+      {
+        "label": "外派者事後後悔率 / 滿意度",
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "status": "no_reliable_data",
+        "source": "",
+        "url": "",
+        "sample": "",
+        "confidence": "none",
+        "note": "研究確認無可靠的外派事後後悔率/滿意度直接數據（Stahl 2009 測的是離職意圖）。→ 不展示。"
+      }
+    ]
+  }
+}

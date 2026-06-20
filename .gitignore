@@ -1,0 +1,6 @@
+# generated experiment data (participant records / follow-ups)
+experiment/data/*.jsonl
+!experiment/data/outcomes.template.jsonl
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>決策研究</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main id="app">
+    <!-- Step: consent -->
+    <section id="step-consent" class="step active">
+      <h1>決策研究</h1>
+      <p>你受邀參加一項關於人們如何做決定的研究。全程約數分鐘。參加完全自願，可隨時退出。</p>
+      <p class="muted">完整研究目的會在結束後說明（以免影響你的作答）。我們不收集你的真實姓名。</p>
+      <label class="consent">
+        <input type="checkbox" id="consent-box" />
+        我已年滿 18 歲，已閱讀說明，自願參加並了解可隨時退出。
+      </label>
+      <p class="muted" id="participant-line">
+        參與者代碼（選填，平台 ID）：
+        <input type="text" id="participant-id" placeholder="如 Prolific ID" />
+      </p>
+      <button id="btn-consent" disabled>開始</button>
+      <p id="gate-msg" class="error hidden"></p>
+    </section>
+
+    <!-- Step: scenario + facts -->
+    <section id="step-facts" class="step">
+      <h2 id="scenario-title"></h2>
+      <p id="scenario-prompt"></p>
+      <p class="muted">選項：<span id="scenario-options"></span></p>
+      <div id="fact-fields"></div>
+      <button id="btn-facts">下一步</button>
+    </section>
+
+    <!-- Step: layer1 + layer2 -->
+    <section id="step-reflect" class="step">
+      <div id="layer1" class="hidden">
+        <h3>📊 群體基準（不是你個人的命運預測）</h3>
+        <ul id="base-rates"></ul>
+        <p class="warn" id="individual-warning"></p>
+      </div>
+      <div id="layer2"></div>
+      <button id="btn-reflect">下一步</button>
+    </section>
+
+    <!-- Step: decision -->
+    <section id="step-decision" class="step">
+      <h3>✍️ 你的決定（由你決定，工具不替你決定）</h3>
+      <div id="decision-options"></div>
+      <label>你預測一年後對此決定的滿意度（1–10）
+        <input type="number" id="satisfaction" min="1" max="10" />
+      </label>
+      <label>你認為這個決定「最終會走得好」的機率（0–100%）
+        <input type="number" id="probability" min="0" max="100" />
+      </label>
+      <button id="btn-decision">下一步</button>
+    </section>
+
+    <!-- Step: misattribution -->
+    <section id="step-misattribution" class="step">
+      <h3>🔎 最後兩個小評分</h3>
+      <p class="muted">以下兩段文字，各有多貼合你的真實處境？（1=完全不貼合，5=非常貼合）</p>
+      <div class="rate-block">
+        <p id="mis-own" class="reading"></p>
+        <label>甲 的貼合度
+          <input type="number" id="own-fit" min="1" max="5" />
+        </label>
+      </div>
+      <div class="rate-block">
+        <p id="mis-swapped" class="reading"></p>
+        <label>乙 的貼合度
+          <input type="number" id="swapped-fit" min="1" max="5" />
+        </label>
+      </div>
+      <button id="btn-misattribution">完成</button>
+    </section>
+
+    <!-- Step: debrief -->
+    <section id="step-debrief" class="step">
+      <h2>感謝你的參與</h2>
+      <p>這項研究在比較四種不同的「決策輔助方式」對你判斷品質的影響。你被<strong>隨機</strong>分到其中一組。</p>
+      <p class="warn">若你看到一段感覺「蠻準」的個人化解讀——那其實是刻意設計的<strong>通用語句</strong>，
+        對幾乎任何人都會感覺準（巴納姆／福勒效應）。這正是我們要檢驗的：真正有用的工具，
+        要做到比「讓人感覺準」更多。</p>
+      <p class="muted">這類工具<strong>不預測</strong>你個人的結果——它的目的是幫你想得更全、管理不確定性。</p>
+      <p class="muted">我們可能在約 3 個月後邀你做簡短追蹤（自願），以了解真實結果。再次感謝！</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
