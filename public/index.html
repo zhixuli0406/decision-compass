@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>決策羅盤 Decision Compass</title>
+  <meta name="description" content="一個幫你想得更全、管理不確定性的決策輔助工具。不預測命運，只給你統計概率與結構化反思。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <!-- Step: welcome -->
+    <section id="step-welcome" class="step active">
+      <h1>🧭 決策羅盤</h1>
+      <p class="lead">幫你把一個難決定<strong>想得更全</strong>的工具。</p>
+      <p class="muted">
+        它<strong>不預測</strong>你的結果，也不算命。它做兩件有根據的事：
+        在有可靠資料時給你<strong>群體統計概率</strong>，並用一套<strong>去偏誤反思</strong>
+        幫你看見自己的盲點。決定永遠是你自己做。
+      </p>
+      <p>想想一個你最近正在猶豫的決定，或從下面選一個範例：</p>
+      <div id="scenario-picker"></div>
+      <details class="disclaimer">
+        <summary>關於這個工具（請讀一下）</summary>
+        <p>這是一個<strong>開放式興趣專案</strong>，不是經驗證的產品，不構成財務、醫療或法律建議。
+        工具的「反思層」是否真能改善決策<strong>尚未經對照實驗驗證</strong>——我們誠實地把它定位為
+        思考輔助，而非預言。資料只存在你自己的瀏覽器，不會上傳。</p>
+        <p><a href="https://github.com/zhixuli0406/decision-compass" target="_blank" rel="noopener">原始碼與研究文件 →</a></p>
+      </details>
+    </section>
+
+    <!-- Step: custom decision -->
+    <section id="step-custom" class="step">
+      <h2>描述你的決定</h2>
+      <label>一句話說這個決定是什麼？
+        <input type="text" id="custom-title" placeholder="例如：要不要接這個新專案？" />
+      </label>
+      <label>選項 A
+        <input type="text" id="custom-opt-a" placeholder="例如：接下來" />
+      </label>
+      <label>選項 B
+        <input type="text" id="custom-opt-b" placeholder="例如：婉拒" />
+      </label>
+      <button id="btn-custom">下一步</button>
+    </section>
+
+    <!-- Step: facts -->
+    <section id="step-facts" class="step">
+      <h2 id="scenario-title"></h2>
+      <p id="scenario-prompt"></p>
+      <p class="muted">選項：<span id="scenario-options"></span></p>
+      <div id="fact-fields"></div>
+      <button id="btn-facts">下一步</button>
+    </section>
+
+    <!-- Step: reflect -->
+    <section id="step-reflect" class="step">
+      <div id="layer1" class="hidden">
+        <h3>📊 群體基準（不是你個人的命運預測）</h3>
+        <ul id="base-rates"></ul>
+        <p class="warn">個體結果有很大的不可化約變數；以上是群體概率，不是你的結局。</p>
+      </div>
+      <div id="layer2"></div>
+      <button id="btn-reflect">下一步</button>
+    </section>
+
+    <!-- Step: decision -->
+    <section id="step-decision" class="step">
+      <h3>✍️ 你的決定</h3>
+      <p class="muted">工具給你概率與盲點，但決定是你做。</p>
+      <div id="decision-options"></div>
+      <label>你預測一年後對這個決定的滿意度（1–10）
+        <input type="number" id="satisfaction" min="1" max="10" />
+      </label>
+      <label>你認為這個決定「最終會走得好」的機率（0–100%）
+        <input type="number" id="probability" min="0" max="100" />
+      </label>
+      <button id="btn-decision">記下來</button>
+    </section>
+
+    <!-- Step: done -->
+    <section id="step-done" class="step">
+      <h2>✅ 已記進你的決策日誌</h2>
+      <div id="done-summary" class="reading"></div>
+      <p class="muted">日誌只存在你這台裝置的瀏覽器，沒有上傳任何地方。</p>
+      <p><strong>📅 校準回訪：</strong><span id="follow-up"></span></p>
+      <p class="muted">真正的價值在未來——到時回來看看，你（和這個工具）當初的判斷準不準。
+        這是它和算命最大的不同：它的對錯，現實會檢驗。</p>
+      <button id="btn-restart">再記一個決定</button>
+      <button id="btn-journal" class="secondary">查看我的決策日誌</button>
+    </section>
+
+    <!-- Step: journal -->
+    <section id="step-journal" class="step">
+      <h2>我的決策日誌</h2>
+      <div id="journal-list"></div>
+      <button id="btn-back">返回</button>
+    </section>
+  </main>
+  <footer>
+    <span>決策羅盤 · 開放式興趣專案 · Apache-2.0</span>
+    <a href="https://github.com/zhixuli0406/decision-compass" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
